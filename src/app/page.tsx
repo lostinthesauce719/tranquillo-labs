@@ -39,7 +39,7 @@ export default function Home() {
               <a href="#how-it-works" className="text-text-muted hover:text-text-primary transition-colors">How It Works</a>
               <a href="#pricing" className="text-text-muted hover:text-text-primary transition-colors">Pricing</a>
               <Button variant="outline" size="sm">Sign In</Button>
-              <Button size="sm">Get Started</Button>
+              <a href="/dashboard"><Button size="sm">Get Started</Button></a>
             </div>
             <button className="md:hidden text-brand">
               <Menu className="w-6 h-6" />
@@ -64,7 +64,7 @@ export default function Home() {
                 operations platform they deserve.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="gap-2">
+                <Button size="lg" className="gap-2" onClick={() => window.location.href = "/dashboard"}>
                   Start Free Trial <ArrowRight className="w-4 h-4" />
                 </Button>
                 <Button variant="outline" size="lg">
@@ -403,7 +403,7 @@ export default function Home() {
             Start your free trial today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="gap-2">
+            <Button size="lg" className="gap-2" onClick={() => window.location.href = "/dashboard"}>
               Start Free Trial <ArrowRight className="w-4 h-4" />
             </Button>
             <Button variant="outline" size="lg">
