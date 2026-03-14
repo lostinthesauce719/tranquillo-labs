@@ -17,15 +17,36 @@ A complete trade operations infrastructure:
 
 ## Tech Stack
 
-- **Frontend:** Next.js 14+ (App Router), React, shadcn/ui, Tailwind CSS
+- **Frontend:** Next.js 14+ (App Router), React, Tailwind CSS
+- **UI Components:** Custom components built on Radix patterns
+- **Icons:** Lucide React
 - **Backend:** Convex (real-time database, functions, auth)
 - **Auth:** Clerk
 - **Communications:** Twilio (SMS, Voice)
 - **Maps:** Google Places API (address autocomplete)
 
+## Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+Open [http://localhost:3000](http://localhost:3000) to see the landing page.
+
 ## Project Status
 
-🚧 **Early Development** — Scaffolding in progress.
+🚧 **Early Development** — Landing page complete, scaffolding in progress.
+
+## Documentation
+
+- [v1.3 UI Specification](./docs/v1.3-ui-spec.md) — Complete screen-by-screen design system
 
 ---
 
