@@ -513,7 +513,7 @@ export default function IntakeDetailPage() {
               <div>
                 <p className="text-xs font-semibold text-text-muted mb-1.5">Tags</p>
                 <div className="flex gap-1.5 flex-wrap">
-                  {session.tags.map((tag) => (
+                  {session.tags.map((tag: string) => (
                     <Badge key={tag} variant="muted">{tag}</Badge>
                   ))}
                 </div>

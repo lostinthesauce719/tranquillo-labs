@@ -14,7 +14,7 @@ import { useState } from "react";
 
 export function TopNav() {
   const { user } = useUser();
-  const { data: company } = useCurrentCompany();
+  const { company } = useCurrentCompany();
   const [soundEnabled, setSoundEnabled] = useState(true);
 
   const unreadCount = useQuery(
@@ -71,7 +71,7 @@ export function TopNav() {
               <div className="text-xs text-text-muted capitalize">{company.role}</div>
             </div>
           )}
-          <UserButton afterSignOutUrl="/" />
+          <UserButton />
         </div>
       </div>
     </header>

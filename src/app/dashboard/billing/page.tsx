@@ -64,7 +64,7 @@ const tierFeatures = [
 ];
 
 // Mock invoice history (in production this would come from Convex/Stripe)
-const mockInvoices = [
+const mockInvoices: Array<{ id: string; date: string; description: string; amount: number; status: 'paid' | 'pending' | 'failed' }> = [
   { id: '1', date: '2026-03-01', description: 'Monthly subscription — Ops Pro', amount: 249, status: 'paid' as const },
   { id: '2', date: '2026-03-01', description: 'Voice AI add-on', amount: 49, status: 'paid' as const },
   { id: '3', date: '2026-02-15', description: 'Setup financing — installment 3/12', amount: 83.25, status: 'paid' as const },
@@ -159,8 +159,8 @@ export default function BillingPage() {
     );
   }
 
-  const activeAddOns = (features ?? []).filter((f) => f.active && (f.addOnMonthlyRate ?? 0) > 0);
-  const addOnsTotal = activeAddOns.reduce((sum, f) => sum + (f.addOnMonthlyRate ?? 0), 0);
+  const activeAddOns = (features ?? []).filter((f: any) => f.active && (f.addOnMonthlyRate ?? 0) > 0);
+  const addOnsTotal = activeAddOns.reduce((sum: number, f: any) => sum + (f.addOnMonthlyRate ?? 0), 0);
   const monthlyTotal = (plan?.monthlyRate ?? 0) + addOnsTotal;
   const hasBalance = (plan?.setupBalanceRemaining ?? 0) > 0;
 
@@ -203,7 +203,7 @@ export default function BillingPage() {
                   <p className="text-xs font-medium uppercase tracking-wider text-text-muted">
                     Active Add-ons
                   </p>
-                  {activeAddOns.map((f) => (
+                  {activeAddOns.map((f: any) => (
                     <div key={f._id} className="flex items-center justify-between text-sm">
                       <span className="text-text-primary">{f.featureName}</span>
                       <span className="text-text-muted">+${f.addOnMonthlyRate}/mo</span>

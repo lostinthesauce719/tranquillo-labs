@@ -170,9 +170,7 @@ function EmptyState({ icon: Icon, message }: { icon: typeof Inbox; message: stri
 // ── Main Dashboard ─────────────────────────────────────────────────────
 
 export default function Dashboard() {
-  const { data: company, isLoading: companyLoading } = useCurrentCompany();
-
-  const companyId = company?.companyId as any;
+  const { company, companyId, isLoading: companyLoading } = useCurrentCompany();
 
   const kpis = useQuery(
     api.dashboard.getKPIs,

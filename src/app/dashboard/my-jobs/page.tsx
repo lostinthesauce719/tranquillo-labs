@@ -147,7 +147,7 @@ export default function MyJobsPage() {
         />
       ) : (
         <div className="space-y-4">
-          {jobs.map((job) => {
+          {jobs.map((job: any) => {
             const isEmergency = job.priority === 'EMERGENCY';
             const pConfig = priorityConfig[job.priority as Priority] ?? priorityConfig.STANDARD;
 

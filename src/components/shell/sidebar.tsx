@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
-import { useCurrentCompany, type UserRole } from "@/hooks/useCurrentCompany";
+import { useCurrentCompany } from "@/hooks/useCurrentCompany";
+type UserRole = "owner" | "dispatcher" | "csr" | "tech";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import {
@@ -46,10 +47,10 @@ function canSee(itemRoles: UserRole[] | "all", userRole: UserRole): boolean {
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { data: company } = useCurrentCompany();
+  const { company, companyId, membership } = useCurrentCompany();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  const role = company?.role ?? "dispatcher";
+  const role = membership?.role ?? "dispatcher";
 
   // Badge queries
   const todayBookingsCount = useQuery(
