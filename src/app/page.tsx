@@ -64,8 +64,8 @@ export default function Home() {
                 operations platform they deserve.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="gap-2" onClick={() => window.location.href = "/dashboard"}>
-                  Start Free Trial <ArrowRight className="w-4 h-4" />
+                <Button size="lg" className="gap-2" >
+                  <a href="/dashboard">Start Free Trial</a> <ArrowRight className="w-4 h-4" />
                 </Button>
                 <Button variant="outline" size="lg">
                   Watch Demo
@@ -403,8 +403,8 @@ export default function Home() {
             Start your free trial today.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="gap-2" onClick={() => window.location.href = "/dashboard"}>
-              Start Free Trial <ArrowRight className="w-4 h-4" />
+            <Button size="lg" className="gap-2" >
+              <a href="/dashboard">Start Free Trial</a> <ArrowRight className="w-4 h-4" />
             </Button>
             <Button variant="outline" size="lg">
               Schedule a Demo
