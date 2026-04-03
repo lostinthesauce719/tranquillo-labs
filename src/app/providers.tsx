@@ -14,7 +14,7 @@ export default function Providers({ children }: { children: ReactNode }) {
     <ClerkProvider
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string}
     >
-      <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
+      <ConvexProviderWithClerk client={convex} useAuth={useAuth as any}>
         {children}
       </ConvexProviderWithClerk>
     </ClerkProvider>

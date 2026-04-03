@@ -196,7 +196,7 @@ export default function InboxPage() {
 
   if (companyLoading) {
     return (
-      <div className="flex items-center justify-center h-[calc(100vh-4rem)] ml-60 pt-16">
+      <div className="flex items-center justify-center h-[calc(100vh-4rem)]">
         <Loader2 className="w-8 h-8 animate-spin text-brand" />
       </div>
     );
@@ -204,7 +204,7 @@ export default function InboxPage() {
 
   if (!companyId) {
     return (
-      <div className="flex items-center justify-center h-[calc(100vh-4rem)] ml-60 pt-16">
+      <div className="flex items-center justify-center h-[calc(100vh-4rem)]">
         <div className="text-center">
           <Inbox className="w-12 h-12 text-text-muted mx-auto mb-4" />
           <h2 className="text-lg font-semibold text-text-primary">No Company Selected</h2>
@@ -217,9 +217,9 @@ export default function InboxPage() {
   // ── Render ───────────────────────────────────────────────────────────
 
   return (
-    <div className="ml-60 pt-16 h-screen flex flex-col">
+    <div className="h-screen flex flex-col">
       {/* Page Header */}
-      <div className="px-6 py-4 border-b border-border bg-surface flex items-center justify-between">
+      <div className="px-4 sm:px-6 py-4 border-b border-border bg-surface flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <h1 className="text-xl font-bold text-text-primary">Intake Inbox</h1>
           <p className="text-sm text-text-muted">
@@ -232,7 +232,7 @@ export default function InboxPage() {
       {/* Two-panel layout */}
       <div className="flex flex-1 overflow-hidden">
         {/* ── Left Panel: Session List (360px) ──────────────────────────── */}
-        <div className="w-[360px] flex-shrink-0 border-r border-border flex flex-col bg-surface">
+        <div className="w-full md:w-[360px] flex-shrink-0 border-r border-border flex flex-col bg-surface">
           {/* Filter Bar */}
           <div className="p-3 border-b border-border space-y-2">
             <div className="flex gap-1 flex-wrap">
@@ -391,8 +391,11 @@ export default function InboxPage() {
           </div>
         </div>
 
-        {/* ── Right Panel: Detail View ──────────────────────────────────── */}
-        <div className="flex-1 overflow-y-auto bg-background">
+        {/* ── Right Panel: Detail View (mobile: overlay, desktop: inline) ── */}
+        <div className={cn(
+          "flex-1 overflow-y-auto bg-background",
+          selectedSession ? "fixed inset-0 z-30 md:relative md:inset-auto md:z-auto" : "hidden md:block"
+        )}>
           {!selectedSession ? (
             <div className="flex flex-col items-center justify-center h-full text-center px-8">
               <div className="w-16 h-16 rounded-full bg-surface-mid flex items-center justify-center mb-4">
@@ -404,7 +407,7 @@ export default function InboxPage() {
               </p>
             </div>
           ) : (
-            <div className="p-6 max-w-3xl">
+            <div className="p-4 sm:p-6 max-w-3xl">
               {/* Session Header */}
               <div className="flex items-start justify-between mb-6">
                 <div>
@@ -539,7 +542,7 @@ export default function InboxPage() {
               )}
 
               {/* Info Grid */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                 {/* Customer Info */}
                 <Card>
                   <CardHeader className="pb-2">
@@ -674,7 +677,7 @@ export default function InboxPage() {
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm">
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     <div>
                       <span className="text-text-muted">Customer:</span>{' '}
                       {selectedSession.customerName}

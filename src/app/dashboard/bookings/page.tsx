@@ -168,7 +168,7 @@ export default function BookingsPage() {
 
   if (companyLoading) {
     return (
-      <div className="flex items-center justify-center h-[calc(100vh-4rem)] ml-60 pt-16">
+      <div className="flex items-center justify-center h-[calc(100vh-4rem)]">
         <Loader2 className="w-8 h-8 animate-spin text-brand" />
       </div>
     );
@@ -176,7 +176,7 @@ export default function BookingsPage() {
 
   if (!companyId) {
     return (
-      <div className="flex items-center justify-center h-[calc(100vh-4rem)] ml-60 pt-16">
+      <div className="flex items-center justify-center h-[calc(100vh-4rem)]">
         <div className="text-center">
           <CalendarCheck className="w-12 h-12 text-text-muted mx-auto mb-4" />
           <h2 className="text-lg font-semibold text-text-primary">No Company Selected</h2>
@@ -198,9 +198,9 @@ export default function BookingsPage() {
   ];
 
   return (
-    <div className="ml-60 pt-16 min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
       {/* Page Header */}
-      <div className="px-6 py-4 border-b border-border bg-surface flex items-center justify-between">
+      <div className="px-4 sm:px-6 py-4 border-b border-border bg-surface flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
           <h1 className="text-xl font-bold text-text-primary">Bookings</h1>
           <p className="text-sm text-text-muted">
@@ -214,7 +214,7 @@ export default function BookingsPage() {
       </div>
 
       {/* Tab Bar */}
-      <div className="px-6 bg-surface border-b border-border">
+      <div className="px-4 sm:px-6 bg-surface border-b border-border overflow-x-auto">
         <div className="flex gap-0">
           {tabs.map((tab) => (
             <button
@@ -237,9 +237,9 @@ export default function BookingsPage() {
       </div>
 
       {/* Filter Bar */}
-      <div className="px-6 py-3 bg-surface border-b border-border flex items-center gap-3 flex-wrap">
+      <div className="px-4 sm:px-6 py-3 bg-surface border-b border-border flex flex-col sm:flex-row sm:items-center gap-3 flex-wrap">
         {/* Search */}
-        <div className="relative flex-1 max-w-xs">
+        <div className="relative flex-1 w-full sm:max-w-xs">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
           <input
             type="text"
@@ -292,7 +292,7 @@ export default function BookingsPage() {
       </div>
 
       {/* Content */}
-      <div className="px-6 py-4">
+      <div className="px-4 sm:px-6 py-4">
         {isLoading ? (
           <div className="flex items-center justify-center py-16">
             <Loader2 className="w-8 h-8 animate-spin text-text-muted" />
@@ -300,8 +300,8 @@ export default function BookingsPage() {
         ) : bookings.length === 0 ? (
           <EmptyState tab={activeTab} />
         ) : (
-          <div className="bg-surface rounded-xl border border-border overflow-hidden">
-            <table className="w-full">
+          <div className="bg-surface rounded-xl border border-border overflow-x-auto">
+            <table className="w-full min-w-[700px]">
               <thead>
                 <tr className="border-b border-border bg-surface-mid/50">
                   <th className="text-left text-xs font-medium text-text-muted px-4 py-3">Time</th>

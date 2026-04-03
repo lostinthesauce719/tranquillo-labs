@@ -202,7 +202,7 @@ export default function Dashboard() {
   const recentActivity = activityFeed?.slice(0, 10) ?? [];
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       {/* Page Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-text-primary">Dashboard</h1>

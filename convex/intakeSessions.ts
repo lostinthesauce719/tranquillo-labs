@@ -184,6 +184,38 @@ export const markResolved = mutation({
   },
 });
 
+/**
+ * updateAiScoring - Updates an intake session with AI-generated urgency score
+ * and summary. Optionally escalates the session if score >= 9.
+ * Called by the aiScoring.scoreIntake action.
+ */
+export const updateAiScoring = mutation({
+  args: {
+    intakeSessionId: v.id("intakeSessions"),
+    urgencyScore: v.number(),
+    aiSummary: v.string(),
+    escalate: v.optional(v.boolean()),
+  },
+  handler: async (ctx, args) => {
+    const session = await ctx.db.get(args.intakeSessionId);
+    if (!session) {
+      throw new Error(`Intake session not found: ${args.intakeSessionId}`);
+    }
+
+    const updates: Record<string, unknown> = {
+      urgencyScore: args.urgencyScore,
+      aiSummary: args.aiSummary,
+    };
+
+    if (args.escalate) {
+      updates.status = "escalated";
+    }
+
+    await ctx.db.patch(args.intakeSessionId, updates);
+    return args.intakeSessionId;
+  },
+});
+
 export const escalate = mutation({
   args: {
     id: v.id("intakeSessions"),
