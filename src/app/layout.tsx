@@ -1,14 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-body",
+});
+
+const instrumentSerif = Instrument_Serif({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-display",
+});
 
 export const metadata: Metadata = {
-  title: "Tranquillo Labs | AI-Powered Operations for Home Services",
+  title: "Velorah — Where dreams rise through the silence.",
   description:
-    "HVAC, plumbing, electrical and home service businesses finally get the modern operations platform they deserve. Intake, dispatch, and billing—simplified.",
+    "Designing tools for deep thinkers, bold creators, and quiet rebels. Digital spaces for sharp focus and inspired work.",
 };
 
 export default function RootLayout({
@@ -17,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${instrumentSerif.variable}`}>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -25,7 +35,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body style={{ fontFamily: "var(--font-body)" }}>
         <Providers>{children}</Providers>
       </body>
     </html>

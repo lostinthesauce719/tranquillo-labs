@@ -22,6 +22,8 @@ const config: Config = {
         warning: "var(--warning)",
         danger: "var(--danger)",
         info: "var(--info)",
+        foreground: "hsl(var(--foreground))",
+        "muted-foreground": "hsl(var(--muted-foreground))",
       },
     },
   },
