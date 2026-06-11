@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 const VIDEO_SRC =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4";
 
@@ -13,6 +17,15 @@ const MUTED = "#a5a5ac"; // hsl(240 4% 66%)
 const DISPLAY_FONT = "var(--velorah-font-display, 'Instrument Serif', serif)";
 
 export default function VelorahHero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
+
   return (
     <div
       className="relative min-h-screen overflow-hidden"
@@ -20,6 +33,7 @@ export default function VelorahHero() {
     >
       {/* Background video */}
       <video
+        ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover z-0"
         autoPlay
         loop
